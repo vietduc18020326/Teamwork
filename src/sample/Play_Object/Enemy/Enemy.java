@@ -8,4 +8,5 @@ public interface Enemy {
     long getArmor();
     double getSpeed();
     long getReward();
+    boolean isDestroyed();
 }

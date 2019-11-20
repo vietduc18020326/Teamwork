@@ -12,10 +12,10 @@ public final class Config {
     public static final Image NORMAL_ENEMY_IMAGE=new Image("file:src/image/Normal_enemy.png");
     public static final Image SMALLER_ENEMY_IMAGE=new Image("file:src/image/Smaller_enemy.png");
     public static final Image TANKER_ENEMY_IMAGE=new Image("file:src/image/Tanker_enemy.png");
-
-    public static final Image NORMAL_TOWER_IMAGE = new Image("file:src/image/tower.png");
-    public static final Image MACHINE_GUN_TOWER_IMAGE=new Image("file:src/image/Machine_Gun.png");
-    public static final Image SNIPER_TOWER_IMAGE=new Image("file:src/image/Untitled.png");
+    public static final Image NORMAL_TOWER_IMAGE=new Image("file:src/image/Normal_tower.png");
+    public static final Image MACHINE_GUN_TOWER_IMAGE=new Image("file:src/image/Normal_enemy.png");
+    public static final Image SNIPER_TOWER_IMAGE=new Image("file:src/image/Boss_enemy.png");
+    public static final Image BACKGROUND_IMAGE=new Image("file:src/image/Background.png");
 
     //region Bullet
     public static final long NORMAL_BULLET_TTL = 30;
@@ -31,7 +31,8 @@ public final class Config {
     public static final double SNIPER_BULLET_SPEED = 0.5;
     //endregion
 
-    //region
+    //region Tower
+
     public static final double NORMAL_TOWER_SIZE = 80;
     public static final long NORMAL_TOWER_SPEED = 30;
     public static final double NORMAL_TOWER_RANGE = 5.0;
@@ -52,7 +53,7 @@ public final class Config {
     public static final double NORMAL_ENEMY_SIZE = 80;
     public static final long NORMAL_ENEMY_HEALTH = 100;
     public static final long NORMAL_ENEMY_ARMOR = 3;
-    public static final double NORMAL_ENEMY_SPEED = 0.3;
+    public static final double NORMAL_ENEMY_SPEED = 1;
     public static final long NORMAL_ENEMY_REWARD = 1;
 
     public static final double SMALLER_ENEMY_SIZE = 80;

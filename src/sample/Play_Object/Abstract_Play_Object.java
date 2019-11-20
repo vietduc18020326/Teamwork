@@ -14,10 +14,6 @@ public abstract class Abstract_Play_Object implements Play_Object{
         this.posY=posY;
     }
 
-    public void update()
-    {setPosX(getPosX()+1);}
-
-
     @Override
     public final double getPosX() { return posX; }
 
@@ -42,5 +38,6 @@ public abstract class Abstract_Play_Object implements Play_Object{
     @Override
     public Image getImage() { return image; }
     public void setImage(Image image) { this.image = image; }
+
 
 }

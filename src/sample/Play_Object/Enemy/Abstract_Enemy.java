@@ -1,6 +1,7 @@
 package sample.Play_Object.Enemy;
 
 import javafx.scene.image.Image;
+import sample.Config;
 import sample.Play_Object.Abstract_Play_Object;
 
 public abstract class Abstract_Enemy extends Abstract_Play_Object implements Enemy{
@@ -30,8 +31,11 @@ public abstract class Abstract_Enemy extends Abstract_Play_Object implements Ene
     public long getReward() { return reward; }
     public void setReward(long reward) { this.reward = reward; }
 
-
-    //public boolean isDestroyed() {}
+    public boolean isDestroyed()
+    {
+        if ((int) (getPosX()/ Config.UNIT_IMAGE) == 15) return true;
+        else return false;
+    }
 
 
 }
