@@ -13,6 +13,7 @@ public class Game_Field  {
     protected ArrayList<Abstract_Enemy> Enemy_list = new ArrayList<>();
     protected ArrayList<Abstract_Tower> Tower_List = new ArrayList<>();
     protected Map Map_1=new Map();
+    private int [][] count_Tower = new int[100][100];
 
     public Game_Field(){}
 
@@ -37,9 +38,10 @@ public class Game_Field  {
         int b_X = (int)Math.ceil(b)-1;
 
         char sign = Map_1.getMap(a_X,b_X);
-        if(sign == 'T') {
+        if(sign == 'T'&&count_Tower[a_X][b_X]==0) {
             tower.setPosX(a_X*80);
             tower.setPosY(b_X*80);
+            count_Tower[a_X][b_X]++;
             return true;
         }
             return false;
