@@ -24,6 +24,7 @@ import sample.Play_Object.Tower.Abstract_Tower;
 import sample.Play_Object.Tower.Machine_Gun_Tower;
 import sample.Play_Object.Tower.Normal_Tower;
 import sample.Play_Object.Tower.Sniper_Tower;
+import sample.Game_Stage.*;
 
 
 import java.io.FileNotFoundException;
@@ -34,7 +35,6 @@ import java.util.List;
 public class Main extends Application {
     Pane layout = new Pane();
     Scene scene,scene1;
-    private int a = 0;
     private int PosX , PosY;
     private Abstract_Tower select_tower;
     private boolean test_click = true;
@@ -42,6 +42,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException, InterruptedException {
+        Game_Stage game_stage = new Game_Stage();
 
         Game_Field game_field= new Game_Field();
         game_field.Add_Tower();
@@ -49,7 +50,6 @@ public class Main extends Application {
 
         create_Button(game_field);
 
-        List<Abstract_Tower> towers = new ArrayList<Abstract_Tower>();
         layout.getChildren().add(new ImageView(Config.BACKGROUND_IMAGE));
 
         layout.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -62,27 +62,6 @@ public class Main extends Application {
         layout.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                /*if(a==1){
-                    Abstract_Tower tower = new Normal_Tower(PosX,PosY);
-                    if(game_field.Position_Tower(tower)) {
-                        towers.add(tower);
-                    }
-                    a=0;
-                }
-                if(a==2){
-                    Abstract_Tower tower = new Sniper_Tower(PosX,PosY);
-                    if(game_field.Position_Tower(tower)) {
-                        towers.add(tower);
-                    }
-                    a=0;
-                }
-                if(a==3){
-                    Abstract_Tower tower = new Machine_Gun_Tower(PosX,PosY);
-                    if(game_field.Position_Tower(tower)){
-                        towers.add(tower);
-                    }
-                    a=0;
-                } */
                 if(test_click) {
                     select_tower.setPosX(PosX);
                     select_tower.setPosY(PosY);
@@ -99,7 +78,8 @@ public class Main extends Application {
         layout.getChildren().add(canvas);
         layout.getChildren().addAll(button1,button2,button3);
         Scene scene = new Scene(layout,1280,720);
-        primaryStage.setScene(scene);
+
+        game_stage.gameStage(scene,primaryStage);
         primaryStage.show();
 
         // delay time and run game
@@ -140,7 +120,6 @@ public class Main extends Application {
         button1.setLayoutX(80);
         button1.setLayoutY(640);
         button1.setOnAction((ActionEvent e)->{
-            //a=1;
             select_tower = new Normal_Tower(0,0);
             test_click = true;
         });
@@ -152,7 +131,6 @@ public class Main extends Application {
         button2.setLayoutY(640);
         button2.setLayoutX(80*2);
         button2.setOnAction((ActionEvent e)->{
-            //a=2;
             select_tower = new Sniper_Tower(0,0);
             test_click = true;
         });
@@ -164,7 +142,6 @@ public class Main extends Application {
         button3.setLayoutY(640);
         button3.setLayoutX(80*3);
         button3.setOnAction((ActionEvent e)->{
-            //a=3;
             select_tower = new Machine_Gun_Tower(0,0);
             test_click = true;
         });
