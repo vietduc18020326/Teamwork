@@ -51,6 +51,10 @@ public class Game_Field  {
         Tower_List.add(new Sniper_Tower(Map_1.getStart_X() + 80, 720 - 80));
         Tower_List.add(new Machine_Gun_Tower(Map_1.getStart_X(),Map_1.getStart_Y()));
     }
+    public void Add_TowerField(Abstract_Tower tower)
+    {
+        Tower_List.add(tower);
+    }
     public boolean Position_Tower(Abstract_Tower tower){
         double a = (double)tower.getPosX()/Config.UNIT_IMAGE;
         double b = (double)tower.getPosY()/Config.UNIT_IMAGE;
