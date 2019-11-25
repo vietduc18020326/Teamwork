@@ -86,27 +86,28 @@ public class Main extends Application {
         Timeline draw = new Timeline();
         draw.setCycleCount(Timeline.INDEFINITE);
 
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.01),(ActionEvent e)->
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.01), (ActionEvent e) ->
         {
 
-            gc.clearRect(0,0,1280,720);
-            gc.save();
-            game_field.Add_Enemy();
-            for(int i= 0 ; i<game_field.getEnemy_list().size() ; i++) {
-                gc.drawImage(game_field.getEnemy_list().get(i).getImage(),
-                        game_field.getEnemy_list().get(i).getPosX(),
-                        game_field.getEnemy_list().get(i).getPosY(),
-                        Config.UNIT_IMAGE,
-                        Config.UNIT_IMAGE);
-                game_field.Guide_Enemy(game_field.Enemy_list.get(i));
-                game_field.Destroy_Enemy(i);
-            }
-            //for(Abstract_Tower t : towers)  gc.drawImage(t.getImage(),t.getPosX(),t.getPosY(),80,80);
-            for(int i=3 ;i<game_field.getTower_List().size();i++){
-                gc.drawImage(game_field.getTower_List().get(i).getImage(),game_field.getTower_List().get(i).getPosX(),game_field.getTower_List().get(i).getPosY(),80,80);
-            }
-            gc.restore();
+            if(primaryStage.getScene().equals(scene)) {
+                gc.clearRect(0, 0, 1280, 720);
+                gc.save();
+                game_field.Add_Enemy();
+                for (int i = 0; i < game_field.getEnemy_list().size(); i++) {
+                    gc.drawImage(game_field.getEnemy_list().get(i).getImage(),
+                            game_field.getEnemy_list().get(i).getPosX(),
+                            game_field.getEnemy_list().get(i).getPosY(),
+                            Config.UNIT_IMAGE,
+                            Config.UNIT_IMAGE);
+                    game_field.Guide_Enemy(game_field.Enemy_list.get(i));
+                    game_field.Destroy_Enemy(i);
+                }
 
+                for (int i = 3; i < game_field.getTower_List().size(); i++) {
+                    gc.drawImage(game_field.getTower_List().get(i).getImage(), game_field.getTower_List().get(i).getPosX(), game_field.getTower_List().get(i).getPosY(), 80, 80);
+                }
+                gc.restore();
+            }
         });
         draw.getKeyFrames().add(keyFrame);
         draw.play();

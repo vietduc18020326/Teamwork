@@ -20,6 +20,7 @@ public class Game_Stage {
         button.setLayoutY(280);
         button.setOnAction((ActionEvent e)->{
             stage.setScene(scene);
+
         });
         Pane layout = new Pane();
         layout.getChildren().addAll(background,button);
