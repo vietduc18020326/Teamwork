@@ -52,26 +52,8 @@ public class Main extends Application {
 
         layout.getChildren().add(new ImageView(Config.BACKGROUND_IMAGE));
 
-        layout.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-                PosX = (int)e.getX();
-                PosY = (int)e.getY();
-            }
-        });
-        layout.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-                if(test_click) {
-                    select_tower.setPosX(PosX);
-                    select_tower.setPosY(PosY);
-                    if (game_field.Position_Tower(select_tower)) {
-                        game_field.Add_TowerField(select_tower);
-                    }
-                    test_click = false;
-                }
-            }
-        });
+        MouseEvent(game_field);
+
         //Canvas,layout
         Canvas canvas = new Canvas(1280, 720);
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -104,7 +86,11 @@ public class Main extends Application {
                 }
 
                 for (int i = 3; i < game_field.getTower_List().size(); i++) {
-                    gc.drawImage(game_field.getTower_List().get(i).getImage(), game_field.getTower_List().get(i).getPosX(), game_field.getTower_List().get(i).getPosY(), 80, 80);
+                    gc.drawImage(game_field.getTower_List().get(i).getImage(),
+                            game_field.getTower_List().get(i).getPosX(),
+                            game_field.getTower_List().get(i).getPosY(),
+                            Config.UNIT_IMAGE,
+                            Config.UNIT_IMAGE);
                 }
                 gc.restore();
             }
@@ -145,6 +131,29 @@ public class Main extends Application {
         button3.setOnAction((ActionEvent e)->{
             select_tower = new Machine_Gun_Tower(0,0);
             test_click = true;
+        });
+    }
+
+    public void MouseEvent(Game_Field game_field){
+        layout.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                PosX = (int)e.getX();
+                PosY = (int)e.getY();
+            }
+        });
+        layout.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                if(test_click) {
+                    select_tower.setPosX(PosX);
+                    select_tower.setPosY(PosY);
+                    if (game_field.Position_Tower(select_tower)) {
+                        game_field.Add_TowerField(select_tower);
+                    }
+                    test_click = false;
+                }
+            }
         });
     }
 
